@@ -1,11 +1,97 @@
 using System;
 using ExamTwoCodeQuestions.Data;
 using Xunit;
+using System.ComponentModel;
 
 namespace ExamTwoCodeQuestions.DataTests
 {
     public class CobblerUnitTests
     {
+        //Cobbler should implement the INotifyPropertyChanged interface
+        [Fact]
+        public void CobblerShouldImplementINotifyPropertyChanged()
+        {
+            var cobbler = new Cobbler();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(cobbler);
+        }
+
+        //Changing the "Fruit" property should invoke PropertyChanged for "Fruit"
+        [Fact]
+        public void ChangingFruitShouldInvokePropertyChangedForFruit()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "Fruit", () =>
+            {
+                cobbler.Fruit = FruitFilling.Cherry;
+            });
+        }
+
+        //Changing the "Fruit" property should invoke PropertyChanged for "IsPeach"
+        [Fact]
+        public void ChangingFruitShouldInvokePropertyChangedForIsPeach()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "IsPeach", () =>
+            {
+                cobbler.Fruit = FruitFilling.Cherry;
+            });
+        }
+
+        //Changing the "Fruit" property should invoke PropertyChanged for "IsCherry"
+        [Fact]
+        public void ChangingFruitShouldInvokePropertyChangedForIsCherry()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "IsCherry", () =>
+            {
+                cobbler.Fruit = FruitFilling.Cherry;
+            });
+        }
+
+        //Changing the "Fruit" property should invoke PropertyChanged for "IsBlueberry"
+        [Fact]
+        public void ChangingFruitShouldInvokePropertyChangedForIsBlueberry()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "IsBlueberry", () =>
+            {
+                cobbler.Fruit = FruitFilling.Cherry;
+            });
+        }
+
+        //Changing the "WithIceCream" property should invoke PropertyChanged for "WithIceCream"
+        [Fact]
+        public void ChangingWithIceCreamShouldInvokePropertyChangedForWithIceCream()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "WithIceCream", () =>
+            {
+                cobbler.WithIceCream = false;
+            });
+        }
+
+        //Changing the "WithIceCream" property should invoke PropertyChanged for "Price"
+        [Fact]
+        public void ChangingWithIceCreamShouldInvokePropertyChangedForPrice()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "Price", () =>
+            {
+                cobbler.WithIceCream = false;
+            });
+        }
+
+        //Changing the "WithIceCream" property should invoke PropertyChanged for "SpecialInstructions"
+        [Fact]
+        public void ChangingWithIceCreamShouldInvokePropertyChangedForSpecialInstructions()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "SpecialInstructions", () =>
+            {
+                cobbler.WithIceCream = false;
+            });
+        }
+
         [Theory]
         [InlineData(FruitFilling.Cherry)]
         [InlineData(FruitFilling.Blueberry)]
